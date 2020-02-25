@@ -38,4 +38,7 @@ public class SomeMagicImpl implements SomeMagic {
     private SomeMagic pureMagic;
     
  ```
+ 
+ ### Example project:
+ [AutoInjectorExample](https://github.com/Pityubak/AutoInjectorExample)
 
