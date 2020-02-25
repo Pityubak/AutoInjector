@@ -36,19 +36,17 @@ import java.util.Map;
  */
 public class Context {
 
-    private List<Class<?>> classes;
-    private final Class<?> mainClass;
+    private final List<Class<?>> classes;
     private final Liberator liberator = new Liberator(Context.class);
 
     public Context(Class<?> mainClass) {
-        this.mainClass = mainClass;
+        this.classes = this.liberator.getClassListFromTargetPackage(mainClass);
     }
 
     public <W> W inject(Class<?> type) {
         final Request request = this.liberator.askForRequest();
         request.setRequestType(type);
         this.liberator.initConfig();
-        this.classes = this.liberator.getClassListFromTargetPackage(mainClass);
         final Map<String, Class<?>> classList = new HashMap<>();
         classes.forEach((cl) -> {
             if (!cl.isInterface()) {
